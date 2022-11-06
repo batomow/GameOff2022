@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://GUI/ButtonsContainer.gd" type="Script" id=2]
 [ext_resource path="res://GUI/MainMenu/MainMenu.gd" type="Script" id=3]
 
 [node name="MainMenu" type="Control"]
@@ -41,6 +42,7 @@ margin_left = -34.5
 margin_top = -58.0
 margin_right = 34.5
 margin_bottom = 58.0
+script = ExtResource( 2 )
 
 [node name="StartButton" type="Button" parent="ButtonsContainer"]
 margin_right = 69.0
@@ -73,8 +75,9 @@ text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="ButtonsContainer/StartButton" to="." method="_on_button_pressed" binds= [ "Start" ]]
-[connection signal="pressed" from="ButtonsContainer/LoadButton" to="." method="_on_button_pressed" binds= [ "Load" ]]
-[connection signal="pressed" from="ButtonsContainer/ContinueButton" to="." method="_on_button_pressed" binds= [ "Continue" ]]
-[connection signal="pressed" from="ButtonsContainer/SettingsButton" to="." method="_on_button_pressed" binds= [ "Settings" ]]
-[connection signal="pressed" from="ButtonsContainer/QuitButton" to="." method="_on_button_pressed" binds= [ "Quit" ]]
+[connection signal="option_pressed" from="ButtonsContainer" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="ButtonsContainer/StartButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Start" ]]
+[connection signal="pressed" from="ButtonsContainer/LoadButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Load" ]]
+[connection signal="pressed" from="ButtonsContainer/ContinueButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Continue" ]]
+[connection signal="pressed" from="ButtonsContainer/SettingsButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Settings" ]]
+[connection signal="pressed" from="ButtonsContainer/QuitButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Quit" ]]
