@@ -3,13 +3,11 @@ extends GutTest
 const FILE_PATH = "res://GlobalSystems/SavesManager.gd"
 const DUMMY_FILE_NAME = "dummy_save"
 
-
-
 func before_all(): 
 	assert_file_exists(FILE_PATH)
 	assert_file_not_empty(FILE_PATH)
 
-func test_correct_type():
+func before_each():
 	var file = load(FILE_PATH)
 	var script = autofree(file.new())
 	assert_is(script, Node)
@@ -26,10 +24,11 @@ func test_save_game():
 		}
 	}
 	assert_has_method(script, "save_game")
-	if is_passing(): 
-		script.save_game(test_data, DUMMY_FILE_NAME)
-	assert_file_exists("res://Saves"+DUMMY_FILE_NAME)
-	assert_file_not_empty("res://Saves"+DUMMY_FILE_NAME)
+	if is_failing(): 
+		return
+	script.save_game(test_data, DUMMY_FILE_NAME)
+	assert_file_exists("res://Saves/"+DUMMY_FILE_NAME)
+	assert_file_not_empty("res://Saves/"+DUMMY_FILE_NAME)
 
 func test_load_game(): 
 	var file = load(FILE_PATH)
@@ -91,5 +90,5 @@ func test_create_new_save():
 	if is_failing(): 
 		return 
 	partial_script.create_new_save()
-	assert_called(partial_script, "save_game", "untitled")
+	assert_called(partial_script, "save_game", ["untitled"])
 	assert_file_exists("res://untitled")
