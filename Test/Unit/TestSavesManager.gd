@@ -57,10 +57,12 @@ func test_load_game():
 
 func test_get_all_save_file_names(): 
 	var file = load(FILE_PATH) 
-	var script = autofree(file.new())
+	var script = partial_double(file).new()
 	assert_has_method(script, "get_all_save_file_names")
+	assert_has_method(script, "load_game")
 	if is_failing(): return
 	var res = script.get_all_save_file_names()
+	assert_called(script, "load_game", "mock_save_file")
 	assert_is(res, Testable)
 	if is_failing(): return
 	assert_eq(res.error, false)
@@ -74,22 +76,28 @@ func test_get_last_save():
 	var file = load(FILE_PATH) 
 	var partial_script = partial_double(file).new()
 	
-	stub(partial_script, 'load_game').to_return({
+	stub(partial_script, "get_all_save_file_names").to_return(Success.new([
+		DUMMY_FILE_NAME, 
+		DUMMY_FILE_NAME+"2"
+	]))
+	
+	stub(partial_script, 'load_game').to_return(Success.new({
 		"file_name": DUMMY_FILE_NAME, 
 		"created_at": 0000000000, 
 		"updated_at": 0000000001
-	}).when_passed(DUMMY_FILE_NAME)
+	})).when_passed(DUMMY_FILE_NAME)
 	
-	stub(partial_script, 'load_game').to_return({
+	stub(partial_script, 'load_game').to_return(Success.new({
 		'file_name': DUMMY_FILE_NAME + "2", 
 		"created_at": 00000000002, 
 		"updated_at": 00000000003
-	}).when_passed(DUMMY_FILE_NAME+"2")
+	})).when_passed(DUMMY_FILE_NAME+"2")
 	
 	assert_has_method(partial_script, "get_last_save")
 	if is_failing(): return
 	var res = partial_script.get_last_save()
-	assert_called(partial_script, "load_game")
+	assert_called(partial_script, "load_game", [DUMMY_FILE_NAME])
+	assert_called(partial_script, "load_game", [DUMMY_FILE_NAME+"2"])
 	assert_is(res, Testable)
 	if is_failing(): return
 	assert_eq(res.error, false)
@@ -97,21 +105,4 @@ func test_get_last_save():
 		gut.p("------------")
 		gut.p(res)
 		return
-	assert_has(res, "file_name")
-	assert_eq(res["file_name"], DUMMY_FILE_NAME+"2")
-
-func test_create_new_save(): 
-	var file = load(FILE_PATH)
-	var partial_script = partial_double(file).new()
-	assert_has_method(partial_script, "create_new_save")
-	if is_failing(): return 
-	var res = partial_script.create_new_save()
-	assert_is(res, Testable)
-	if is_failing(): return
-	assert_eq(res.error, false)
-	if is_failing(): 
-		gut.p("------------")
-		gut.p(res)
-		return
-	assert_called(partial_script, "save_game", ["untitled"])
-	assert_file_exists(DIR_PATH+"untitled.dat")
+	assert_eq(res.value.file_name, DUMMY_FILE_NAME+"2")

@@ -74,12 +74,39 @@ func load_game(file_name:String)->Testable:
 		return Exception.new(message)
 	return Success.new(json_result.result)
 
-func get_all_save_file_names()->Testable: 
-	return Success.new(PoolStringArray())
+func get_all_save_file_names()->Testable:
+	var files = PoolStringArray()
+	var dir = Directory.new() 
+	if not dir.dir_exists(SAVE_DIR): 
+		return Success.new(files)
+	var res = dir.open(SAVE_DIR)
+	if res != OK: 
+		var message = "Couldn't open saves directory"
+		printerr(message)
+		return Exception.new(message)
+	dir.list_dir_begin(true, true)
+	while true: 
+		var file = dir.get_next()
+		if file == "": 
+			break
+		files.append(file)
+	dir.list_dir_end()
+	return Success.new(files)
+
+class CustomSorter: 
+	func custom_sort(a, b): 
+		return a["updated_at"] > b["created_at"]
 
 func get_last_save()->Testable: 
-	return Success.new({})
-
-func create_new_save()->Testable: 
-	return Success.new({})
-
+	var res = get_all_save_file_names()
+	if res.error == true: 
+		return res
+	var save_files = []
+	for file_name in res.value: 
+		res = load_game(file_name.trim_suffix(".dat"))
+		if res.error == true: 
+			return res
+		save_files.push_back(res.value)
+	save_files.sort_custom(CustomSorter.new(), "custom_sort")
+	var last_save_file = save_files[0]
+	return Success.new(last_save_file)
