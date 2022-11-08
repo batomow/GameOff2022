@@ -27,15 +27,29 @@ _global_script_class_icons={
 [application]
 
 config/name="GameOff2022"
+run/main_scene="res://GUI/GameMenu/GameMenu.tscn"
 config/icon="res://icon.png"
 
-[editor_plugins]
+[display]
 
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
+window/size/width=1920
+window/size/height=1080
+
+[global]
+
+window=false
 
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+pause_game={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
