@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Testable",
+"class": "Exception",
+"language": "GDScript",
+"path": "res://Utils/Exception.gd"
+}, {
 "base": "Reference",
 "class": "GutHookScript",
 "language": "GDScript",
@@ -18,10 +23,23 @@ _global_script_classes=[ {
 "class": "GutTest",
 "language": "GDScript",
 "path": "res://addons/gut/test.gd"
+}, {
+"base": "Testable",
+"class": "Success",
+"language": "GDScript",
+"path": "res://Utils/Success.gd"
+}, {
+"base": "Reference",
+"class": "Testable",
+"language": "GDScript",
+"path": "res://Utils/Testable.gd"
 } ]
 _global_script_class_icons={
+"Exception": "",
 "GutHookScript": "",
-"GutTest": ""
+"GutTest": "",
+"Success": "",
+"Testable": ""
 }
 
 [application]
