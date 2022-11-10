@@ -19,6 +19,7 @@ func _on_option_pressed(option: String) -> void:
 func start_game() -> void:
 	#SavesManager.create_new_save()
 	print("STARTING GAME")
+	ScenesManager.transition_scene("Floor1", {})
 
 func load_game() -> void:
 	#SavesManager.load_game(file_name: String)

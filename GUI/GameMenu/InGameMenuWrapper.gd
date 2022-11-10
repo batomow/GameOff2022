@@ -43,7 +43,7 @@ func return_to_main_menu():
 	audio_stream_player.play()
 	yield(audio_stream_player, "finished")
 	print("close game")
-	get_tree().change_scene("res://GUI/MainMenu/MainMenu.tscn")
+	ScenesManager.transition_scene("Main Menu", {})
 	
 func quite_game() -> void:
 	audio_stream_player.play()
