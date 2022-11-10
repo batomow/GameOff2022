@@ -16,9 +16,11 @@ func _on_ConfirmationPopup_option_pressed(option) -> void:
 		"Save":
 			save_game()
 		"Close":
-			close_game()
+			close_popup()
 		"Settings":
 			open_setting()
+		"Return": 
+			return_to_main_menu()
 		"Quit":
 			quite_game()
 
@@ -32,7 +34,12 @@ func save_game() -> void:
 	yield(audio_stream_player, "finished")
 	print("save game")
 
-func close_game():
+func close_popup()->void: 
+	audio_stream_player.play()
+	yield(audio_stream_player, "finished")
+	confirmation_popup.visible = false
+
+func return_to_main_menu():
 	audio_stream_player.play()
 	yield(audio_stream_player, "finished")
 	print("close game")
