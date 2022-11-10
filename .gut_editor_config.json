@@ -8,7 +8,7 @@
  "double_strategy": "partial",
  "font_color": "ffcccccc",
  "font_name": "CourierPrime",
- "font_size": 12,
+ "font_size": 18,
  "hide_orphans": false,
  "ignore_pause": false,
  "include_subdirs": true,
@@ -20,7 +20,7 @@
  "post_run_script": "",
  "pre_run_script": "",
  "prefix": "Test",
- "selected": "TestSavesManager.gd",
+ "selected": null,
  "should_exit": false,
  "should_exit_on_success": false,
  "should_maximize": true,
@@ -30,7 +30,7 @@
  "tests": [
 
  ],
- "unit_test_name": "test_get_last_save",
+ "unit_test_name": null,
  "gut_on_top": true,
  "panel_options": {
   "font_name": "CourierPrime",

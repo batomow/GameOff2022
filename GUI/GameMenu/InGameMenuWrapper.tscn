@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://BigFontTheme.tres" type="Theme" id=2]
+[ext_resource path="res://GUI/GameMenu/InGameMenuWrapper.gd" type="Script" id=3]
+[ext_resource path="res://GUI/GameMenu/ConfirmationPopup.gd" type="Script" id=4]
+[ext_resource path="res://Audio/test_btn.tres" type="AudioStream" id=5]
+[ext_resource path="res://GUI/GameMenu/InGameMenu.gd" type="Script" id=6]
+
+[node name="InGameMenuWrapper" type="Control"]
+margin_right = 1923.0
+margin_bottom = 1076.0
+script = ExtResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -6.118
+
+[node name="InGameMenuMinimized" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 829.5
+margin_top = -534.0
+margin_right = 956.5
+margin_bottom = -463.0
+text = "Show menu"
+
+[node name="ConfirmationPopup" type="Popup" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="ConfirmationPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Backgroud" type="ColorRect" parent="ConfirmationPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.152941, 0.117647, 0.117647, 0.752941 )
+
+[node name="Label" type="Label" parent="ConfirmationPopup"]
+anchor_right = 1.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "Test label"
+align = 1
+
+[node name="InGameMenu" type="VBoxContainer" parent="ConfirmationPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.5
+margin_top = -58.0
+margin_right = 41.5
+margin_bottom = 58.0
+script = ExtResource( 6 )
+
+[node name="SaveGameButton" type="Button" parent="ConfirmationPopup/InGameMenu"]
+margin_right = 83.0
+margin_bottom = 20.0
+focus_neighbour_top = NodePath("../CloseButton")
+text = "Save Game"
+
+[node name="SettingsButton" type="Button" parent="ConfirmationPopup/InGameMenu"]
+margin_top = 24.0
+margin_right = 83.0
+margin_bottom = 44.0
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="ConfirmationPopup/InGameMenu"]
+margin_top = 48.0
+margin_right = 83.0
+margin_bottom = 68.0
+text = "Quit"
+
+[node name="CloseButton" type="Button" parent="ConfirmationPopup/InGameMenu"]
+margin_top = 72.0
+margin_right = 83.0
+margin_bottom = 92.0
+focus_neighbour_bottom = NodePath("../SaveGameButton")
+text = "Close"
+
+[connection signal="pressed" from="InGameMenuMinimized" to="." method="open_popup"]
+[connection signal="option_pressed" from="ConfirmationPopup" to="." method="_on_ConfirmationPopup_option_pressed"]
+[connection signal="option_pressed" from="ConfirmationPopup/InGameMenu" to="ConfirmationPopup" method="_on_InGameMenu_option_pressed"]
+[connection signal="pressed" from="ConfirmationPopup/InGameMenu/SaveGameButton" to="ConfirmationPopup/InGameMenu" method="_option_pressed" binds= [ "Save" ]]
+[connection signal="pressed" from="ConfirmationPopup/InGameMenu/SettingsButton" to="ConfirmationPopup/InGameMenu" method="_option_pressed" binds= [ "Settings" ]]
+[connection signal="pressed" from="ConfirmationPopup/InGameMenu/QuitButton" to="ConfirmationPopup/InGameMenu" method="_option_pressed" binds= [ "Quit" ]]
+[connection signal="pressed" from="ConfirmationPopup/InGameMenu/CloseButton" to="ConfirmationPopup/InGameMenu" method="_option_pressed" binds= [ "Close" ]]
