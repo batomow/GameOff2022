@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Door/Door.gd" type="Script" id=1]
-[ext_resource path="res://Audio/test_btn.tres" type="AudioStream" id=2]
+[ext_resource path="res://Audio/open_a_door.tres" type="AudioStream" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -17,7 +17,6 @@ extents = Vector3( 0.758524, 1.04914, 0.0643014 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "CloseDoor"
-length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("../StaticBody:rotation_degrees")
 tracks/0/interp = 1
@@ -25,7 +24,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 90, 0 ), Vector3( 0, 0, 0 ) ]
@@ -37,15 +36,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 2,
-"values": [ false, false ]
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "OpenDoor"
-length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("../StaticBody:rotation_degrees")
 tracks/0/interp = 1
@@ -53,7 +51,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ) ]
@@ -65,10 +63,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 2,
-"values": [ false ]
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=6]
