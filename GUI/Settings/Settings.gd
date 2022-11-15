@@ -30,11 +30,11 @@ func init_settings() -> void:
 	setting_up = false
 
 func _on_value_changed(value) -> void:
-	if setting_up || not audio_stream_player:
-		return;
-	audio_stream_player.play()
-	yield(audio_stream_player, "finished")
-	
+	if !audio_stream_player.playing:
+		if setting_up || not audio_stream_player:
+			return;
+		audio_stream_player.play()
+		yield(audio_stream_player, "finished")
 	cache_new_value(value)
 
 func _option_pressed(option: String) -> void:
