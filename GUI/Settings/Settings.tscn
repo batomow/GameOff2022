@@ -1,0 +1,290 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://GUI/Settings/VolumeSettings.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Settings/BubbleScripts/SettingsTabContainer.gd" type="Script" id=3]
+[ext_resource path="res://GUI/Settings/Settings.gd" type="Script" id=4]
+[ext_resource path="res://GUI/Settings/CustomGUINodes/HScrollbarContainer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/Settings/GraphicsSettings.gd" type="Script" id=6]
+[ext_resource path="res://GUI/Settings/ResolutionSetting.gd" type="Script" id=7]
+[ext_resource path="res://GUI/Settings/BubbleScripts/SettingsVBoxContainer.gd" type="Script" id=8]
+[ext_resource path="res://GUI/Settings/CustomGUINodes/CheckBoxContainer.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI/ButtonsContainer.gd" type="Script" id=10]
+[ext_resource path="res://Audio/test_btn.tres" type="AudioStream" id=11]
+[ext_resource path="res://GUI/Settings/BubbleScripts/ControlsVboxContainer.gd" type="Script" id=12]
+[ext_resource path="res://GUI/Settings/BubbleScripts/ControlsSettings.gd" type="Script" id=13]
+
+[node name="Settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+bus = "Sound Effects"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0, 0.552941, 1, 0.0980392 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+custom_constants/separation = 10
+script = ExtResource( 8 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 20.0
+script = ExtResource( 10 )
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 42.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Back"
+
+[node name="ResetDefault" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 919.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 10
+text = "Reset Defaults"
+
+[node name="SettingsTabContainer" type="TabContainer" parent="VBoxContainer"]
+margin_top = 30.0
+margin_right = 1024.0
+margin_bottom = 552.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 3 )
+
+[node name="GraphicsSettings" type="VBoxContainer" parent="VBoxContainer/SettingsTabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+script = ExtResource( 6 )
+
+[node name="Resolution" type="HBoxContainer" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings"]
+margin_right = 186.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 10
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings/Resolution"]
+margin_top = 3.0
+margin_right = 76.0
+margin_bottom = 17.0
+size_flags_horizontal = 0
+text = "Resolution: "
+
+[node name="CheckButton" type="OptionButton" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings/Resolution"]
+margin_left = 86.0
+margin_right = 186.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+align = 1
+
+[node name="Fullscreen" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings" instance=ExtResource( 9 )]
+margin_top = 30.0
+margin_right = 1016.0
+margin_bottom = 54.0
+title = "Fullscreen:"
+
+[node name="Vsync" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings" instance=ExtResource( 9 )]
+margin_top = 64.0
+margin_right = 1016.0
+margin_bottom = 88.0
+title = "Vsync:"
+
+[node name="Brightness" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings" instance=ExtResource( 5 )]
+margin_top = 98.0
+margin_right = 1016.0
+margin_bottom = 112.0
+__meta__ = {
+"_editor_description_": "Includes a label that is updated by the scrollbar"
+}
+title = "Brightness:"
+
+[node name="ControlsSettings" type="ScrollContainer" parent="VBoxContainer/SettingsTabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 4
+script = ExtResource( 13 )
+
+[node name="ControlsVBoxContainer" type="VBoxContainer" parent="VBoxContainer/SettingsTabContainer/ControlsSettings"]
+margin_left = 508.0
+margin_right = 508.0
+size_flags_horizontal = 6
+script = ExtResource( 12 )
+
+[node name="VolumeSettings" type="VBoxContainer" parent="VBoxContainer/SettingsTabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+script = ExtResource( 2 )
+
+[node name="MasterVolume" parent="VBoxContainer/SettingsTabContainer/VolumeSettings" instance=ExtResource( 5 )]
+margin_right = 1016.0
+size_flags_vertical = 0
+__meta__ = {
+"_editor_description_": "Includes a label that is updated by the scrollbar"
+}
+title = "Master Volume:"
+
+[node name="MusicVolume" parent="VBoxContainer/SettingsTabContainer/VolumeSettings" instance=ExtResource( 5 )]
+margin_top = 18.0
+margin_right = 1016.0
+margin_bottom = 32.0
+size_flags_vertical = 0
+__meta__ = {
+"_editor_description_": "Includes a label that is updated by the scrollbar"
+}
+title = "Music Volume:"
+
+[node name="SoundEffectsVolume" parent="VBoxContainer/SettingsTabContainer/VolumeSettings" instance=ExtResource( 5 )]
+margin_top = 36.0
+margin_right = 1016.0
+margin_bottom = 50.0
+size_flags_vertical = 0
+__meta__ = {
+"_editor_description_": "Includes a label that is updated by the scrollbar"
+}
+title = "Sound Effects:"
+
+[node name="VoiceOverVolume" parent="VBoxContainer/SettingsTabContainer/VolumeSettings" instance=ExtResource( 5 )]
+margin_top = 54.0
+margin_right = 1016.0
+margin_bottom = 68.0
+size_flags_vertical = 0
+__meta__ = {
+"_editor_description_": "Includes a label that is updated by the scrollbar"
+}
+title = "Voice Over Volume:"
+
+[node name="Apply" type="Button" parent="VBoxContainer"]
+visible = false
+margin_left = 357.0
+margin_top = 460.0
+margin_right = 462.0
+margin_bottom = 480.0
+size_flags_horizontal = 6
+text = "Apply Changes"
+
+[node name="Spacer" type="Label" parent="VBoxContainer"]
+margin_top = 562.0
+margin_right = 1024.0
+margin_bottom = 576.0
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 10 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 206.0
+margin_bottom = 82.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+custom_constants/separation = 10
+script = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer"]
+margin_right = 202.0
+margin_bottom = 48.0
+size_flags_horizontal = 7
+text = "You have made changes!
+
+Would you like to apply them?"
+align = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer"]
+margin_top = 58.0
+margin_right = 202.0
+margin_bottom = 78.0
+size_flags_horizontal = 4
+custom_constants/separation = 20
+script = ExtResource( 10 )
+
+[node name="Apply" type="Button" parent="PopupPanel/VBoxContainer/HBoxContainer"]
+margin_right = 48.0
+margin_bottom = 20.0
+text = "Apply"
+
+[node name="Discard" type="Button" parent="PopupPanel/VBoxContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 128.0
+margin_bottom = 20.0
+text = "Discard"
+
+[node name="Cancel" type="Button" parent="PopupPanel/VBoxContainer/HBoxContainer"]
+margin_left = 148.0
+margin_right = 202.0
+margin_bottom = 20.0
+text = "Cancel"
+
+[connection signal="option_pressed" from="VBoxContainer" to="." method="_option_pressed"]
+[connection signal="value_changed" from="VBoxContainer" to="." method="_on_value_changed"]
+[connection signal="option_pressed" from="VBoxContainer/HBoxContainer" to="VBoxContainer" method="_option_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="VBoxContainer/HBoxContainer" method="_option_pressed" binds= [ "back" ]]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ResetDefault" to="VBoxContainer/HBoxContainer" method="_option_pressed" binds= [ "reset_defaults" ]]
+[connection signal="option_pressed" from="VBoxContainer/SettingsTabContainer" to="VBoxContainer/HBoxContainer" method="_option_pressed"]
+[connection signal="tab_changed" from="VBoxContainer/SettingsTabContainer" to="VBoxContainer/SettingsTabContainer" method="_on_SettingsTabContainer_tab_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer" to="VBoxContainer" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings" to="VBoxContainer/SettingsTabContainer" method="_on_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Resolution" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="_on_graphics_value_changed" binds= [ "resolution" ]]
+[connection signal="item_selected" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Resolution/CheckButton" to="VBoxContainer/SettingsTabContainer/GraphicsSettings/Resolution" method="_on_resolution_value_changed"]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Fullscreen" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Fullscreen" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="_on_graphics_value_changed" binds= [ "fullscreen" ]]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Vsync" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Vsync" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="_on_graphics_value_changed" binds= [ "vsync" ]]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Brightness" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/GraphicsSettings/Brightness" to="VBoxContainer/SettingsTabContainer/GraphicsSettings" method="_on_graphics_value_changed" binds= [ "brightness" ]]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/ControlsSettings" to="VBoxContainer/SettingsTabContainer" method="_on_value_changed"]
+[connection signal="changed_key" from="VBoxContainer/SettingsTabContainer/ControlsSettings/ControlsVBoxContainer" to="VBoxContainer/SettingsTabContainer/ControlsSettings" method="changed_key"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings" to="VBoxContainer/SettingsTabContainer" method="_on_value_changed"]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/MasterVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/MasterVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="_on_volume_value_changed" binds= [ "master_volume" ]]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/MusicVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/MusicVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="_on_volume_value_changed" binds= [ "music_volume" ]]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/SoundEffectsVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/SoundEffectsVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="_on_volume_value_changed" binds= [ "sound_effects_volume" ]]
+[connection signal="size_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/VoiceOverVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="childs_size_changed"]
+[connection signal="value_changed" from="VBoxContainer/SettingsTabContainer/VolumeSettings/VoiceOverVolume" to="VBoxContainer/SettingsTabContainer/VolumeSettings" method="_on_volume_value_changed" binds= [ "voice_over_volume" ]]
+[connection signal="pressed" from="VBoxContainer/Apply" to="VBoxContainer" method="_option_pressed" binds= [ "apply" ]]
+[connection signal="option_pressed" from="PopupPanel" to="." method="_option_pressed"]
+[connection signal="popup_hide" from="PopupPanel" to="." method="_option_pressed" binds= [ "popup_focus_left" ]]
+[connection signal="option_pressed" from="PopupPanel/VBoxContainer" to="PopupPanel" method="_option_pressed"]
+[connection signal="option_pressed" from="PopupPanel/VBoxContainer/HBoxContainer" to="PopupPanel/VBoxContainer" method="_option_pressed"]
+[connection signal="pressed" from="PopupPanel/VBoxContainer/HBoxContainer/Apply" to="PopupPanel/VBoxContainer/HBoxContainer" method="_option_pressed" binds= [ "apply_and_leave" ]]
+[connection signal="pressed" from="PopupPanel/VBoxContainer/HBoxContainer/Discard" to="PopupPanel/VBoxContainer/HBoxContainer" method="_option_pressed" binds= [ "discard_changes" ]]
+[connection signal="pressed" from="PopupPanel/VBoxContainer/HBoxContainer/Cancel" to="PopupPanel/VBoxContainer/HBoxContainer" method="_option_pressed" binds= [ "cancel" ]]
