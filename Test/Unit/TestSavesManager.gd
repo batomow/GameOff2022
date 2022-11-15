@@ -62,7 +62,6 @@ func test_get_all_save_file_names():
 	assert_has_method(script, "load_game")
 	if is_failing(): return
 	var res = script.get_all_save_file_names()
-	assert_called(script, "load_game", "mock_save_file")
 	assert_is(res, Testable)
 	if is_failing(): return
 	assert_eq(res.error, false)
