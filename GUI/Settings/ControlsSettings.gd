@@ -21,4 +21,3 @@ func set_up(settings: Dictionary):
 func changed_key():
 	var keymap: Dictionary = SettingsConfig.get_keymap()
 	emit_signal("value_changed", keymap)
-	print("KEY CHANGED")

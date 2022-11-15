@@ -6,9 +6,10 @@ var _default_settings: Dictionary
 var _settings : Dictionary
 var _cached_settings: Dictionary
 
-var SettingsConfig
+var SettingsConfig: Resource
 
 var _has_changes: bool = false
+var setting_up: bool = true
 
 func _ready() -> void:
 	var config = load("res://Resources/SettingsConfig.gd")
@@ -23,13 +24,13 @@ func _ready() -> void:
 
 func init_settings() -> void:
 	#TODO: Load _default_settings from save manager
-	#TODO: Load _settings from save manager
 	$VBoxContainer/SettingsTabContainer/ControlsSettings.set_up(_settings)
 	$VBoxContainer/SettingsTabContainer/GraphicsSettings.set_up(_settings)
 	$VBoxContainer/SettingsTabContainer/VolumeSettings.set_up(_settings)
+	setting_up = false
 
 func _on_value_changed(value) -> void:
-	if not audio_stream_player:
+	if setting_up || not audio_stream_player:
 		return;
 	audio_stream_player.play()
 	yield(audio_stream_player, "finished")
@@ -48,20 +49,19 @@ func _option_pressed(option: String) -> void:
 	match option:
 		"back":
 			if _has_changes:
-				$PopupPanel.popup_centered()
-				$VBoxContainer.hide()
+				show_popup()
 			else:
 				close_settings()
 		"apply":
 			save_settings()
 		"apply_and_leave":
 			save_settings()
-			hide_popup() #temp
+			hide_popup() #TODO: this is temporary, delete it with saves implemented
 			close_settings()
 		"reset_defaults":
 			revert_settings()
 		"discard_changes":
-			hide_popup() #temp
+			hide_popup() #TODO: this is temporary, delete it with saves implemented
 			close_settings()
 		"cancel":
 			hide_popup()
@@ -78,7 +78,7 @@ func save_settings() -> void:
 
 func close_settings() -> void:
 	apply_settings(_settings)
-	#TODO: SceneManager transition to previous scene
+	ScenesManager.transition_scene("Main Menu", {})
 	
 func cache_new_value(value) -> void:
 	_cached_settings.merge(value, true)
@@ -95,13 +95,16 @@ func show_apply_button(is_visible: bool) -> void:
 	$VBoxContainer/Apply.visible = is_visible
 	$VBoxContainer/Spacer.visible = !is_visible
 
+func show_popup() -> void:
+	$PopupPanel.popup_centered()
+	$VBoxContainer.hide()
+
 func hide_popup() -> void:
 	$PopupPanel.hide()
 	$VBoxContainer.show()
 
 func apply_settings(settings_to_apply: Dictionary) -> void:
 	#Graphics
-	OS.set_window_size(settings_to_apply.resolution)
 	get_tree().set_screen_stretch(
 		SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, settings_to_apply.resolution
 	)

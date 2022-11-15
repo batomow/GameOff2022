@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Node
 
 signal option_pressed(option)
 

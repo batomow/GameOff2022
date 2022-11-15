@@ -12,7 +12,7 @@
 [ext_resource path="res://GUI/ButtonsContainer.gd" type="Script" id=10]
 [ext_resource path="res://Audio/test_btn.tres" type="AudioStream" id=11]
 [ext_resource path="res://GUI/Settings/BubbleScripts/ControlsVboxContainer.gd" type="Script" id=12]
-[ext_resource path="res://GUI/Settings/BubbleScripts/ControlsSettings.gd" type="Script" id=13]
+[ext_resource path="res://GUI/Settings/ControlsSettings.gd" type="Script" id=13]
 
 [node name="Settings" type="Control"]
 anchor_right = 1.0
@@ -39,7 +39,7 @@ custom_constants/separation = 10
 script = ExtResource( 8 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1024.0
+margin_right = 1536.0
 margin_bottom = 20.0
 script = ExtResource( 10 )
 
@@ -50,16 +50,16 @@ size_flags_horizontal = 0
 text = "Back"
 
 [node name="ResetDefault" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 919.0
-margin_right = 1024.0
+margin_left = 1431.0
+margin_right = 1536.0
 margin_bottom = 20.0
 size_flags_horizontal = 10
 text = "Reset Defaults"
 
 [node name="SettingsTabContainer" type="TabContainer" parent="VBoxContainer"]
 margin_top = 30.0
-margin_right = 1024.0
-margin_bottom = 552.0
+margin_right = 1536.0
+margin_bottom = 840.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
@@ -101,19 +101,19 @@ align = 1
 
 [node name="Fullscreen" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings" instance=ExtResource( 9 )]
 margin_top = 30.0
-margin_right = 1016.0
+margin_right = 1528.0
 margin_bottom = 54.0
 title = "Fullscreen:"
 
 [node name="Vsync" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings" instance=ExtResource( 9 )]
 margin_top = 64.0
-margin_right = 1016.0
+margin_right = 1528.0
 margin_bottom = 88.0
 title = "Vsync:"
 
 [node name="Brightness" parent="VBoxContainer/SettingsTabContainer/GraphicsSettings" instance=ExtResource( 5 )]
 margin_top = 98.0
-margin_right = 1016.0
+margin_right = 1528.0
 margin_bottom = 112.0
 __meta__ = {
 "_editor_description_": "Includes a label that is updated by the scrollbar"
@@ -132,8 +132,8 @@ size_flags_horizontal = 4
 script = ExtResource( 13 )
 
 [node name="ControlsVBoxContainer" type="VBoxContainer" parent="VBoxContainer/SettingsTabContainer/ControlsSettings"]
-margin_left = 508.0
-margin_right = 508.0
+margin_left = 764.0
+margin_right = 764.0
 size_flags_horizontal = 6
 script = ExtResource( 12 )
 
@@ -196,9 +196,9 @@ size_flags_horizontal = 6
 text = "Apply Changes"
 
 [node name="Spacer" type="Label" parent="VBoxContainer"]
-margin_top = 562.0
-margin_right = 1024.0
-margin_bottom = 576.0
+margin_top = 850.0
+margin_right = 1536.0
+margin_bottom = 864.0
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 anchor_left = 0.5
