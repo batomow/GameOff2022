@@ -20,7 +20,7 @@
  "post_run_script": "",
  "pre_run_script": "",
  "prefix": "Test",
- "selected": "TestSavesManager.gd",
+ "selected": "TestPlayerScript.gd",
  "should_exit": false,
  "should_exit_on_success": false,
  "should_maximize": true,
@@ -37,7 +37,7 @@
   "font_size": 12,
   "hide_result_tree": false,
   "hide_output_text": true,
-  "hide_settings": true,
+  "hide_settings": false,
   "use_colors": false
  }
 }
