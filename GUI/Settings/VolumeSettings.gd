@@ -12,3 +12,6 @@ func _on_volume_value_changed(value, option: String) -> void:
 	var temp = {}
 	temp[option] = value
 	emit_signal("value_changed", temp)
+
+func childs_size_changed(new_value):
+	_childs_size_changed(new_value)

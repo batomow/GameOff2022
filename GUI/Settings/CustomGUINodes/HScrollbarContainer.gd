@@ -1,5 +1,5 @@
 tool
-extends Control
+extends ControlAligner
 
 signal value_changed(value)
 signal size_changed(size)

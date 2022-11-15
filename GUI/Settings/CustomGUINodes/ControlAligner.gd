@@ -14,7 +14,7 @@ var _biggest_childs_size = Vector2.ZERO
 #    value:                   the thing that gets aligned
 #    a really long statement: the thing that gets aligned
 #
-func childs_size_changed(new_value):
+func _childs_size_changed(new_value):
 	if new_value.x > _biggest_childs_size.x:
 		_biggest_childs_size = new_value
 		for i in get_children():
