@@ -10,7 +10,8 @@ signal failed_to_load_scene(scene_name)
 
 onready var _scenes_map = {
 	"Main Menu": _available_scenes[0], 
-	"Floor1": _available_scenes[1]
+	"Floor1": _available_scenes[1],
+	"Settings": _available_scenes[2]
 }
 
 func _ready(): 

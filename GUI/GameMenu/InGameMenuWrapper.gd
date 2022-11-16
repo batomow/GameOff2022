@@ -27,7 +27,7 @@ func _on_ConfirmationPopup_option_pressed(option) -> void:
 func open_setting() -> void:
 	audio_stream_player.play()
 	yield(audio_stream_player, "finished")
-	print("open settings")
+	ScenesManager.transition_scene("Settings", {})
 
 func save_game() -> void:
 	audio_stream_player.play()

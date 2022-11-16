@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Settings/CustomGUINodes/HScrollbarContainer.gd" type="Script" id=1]
+
+[node name="HScrollbarContainer" type="HBoxContainer" groups=["alignable"]]
+margin_right = 60.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Hbox with a label, Hscrollbar and value label. Has logic for auto alignments using ButtonsContainerWithAlignment scriptr"
+}
+
+[node name="TitleLabel" type="Label" parent="."]
+margin_bottom = 14.0
+
+[node name="HScrollBar" type="HScrollBar" parent="."]
+margin_left = 4.0
+margin_right = 16.0
+margin_bottom = 12.0
+size_flags_horizontal = 3
+value = 100.0
+rounded = true
+
+[node name="ValueLabel" type="Label" parent="."]
+margin_left = 20.0
+margin_right = 60.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 40, 0 )
+text = "100%"
+align = 2
+
+[connection signal="resized" from="TitleLabel" to="." method="_on_Label_resized"]
+[connection signal="value_changed" from="HScrollBar" to="." method="_on_HScrollBar_value_changed"]
