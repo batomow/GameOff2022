@@ -31,8 +31,7 @@ func open_last_save() -> void:
 	print("OPENING LAST SAVE")
 
 func open_settings() -> void:
-	#SceneManager.transition_scene(PackedScene Settings, state)
-	print("OPENING SETTINGS")
+	ScenesManager.transition_scene("Settings", {})
 
 func quit_game() -> void:
 	get_tree().quit()
