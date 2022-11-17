@@ -13,7 +13,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape" id=2]
 
-[node name="Player" type="KinematicBody"]
+[node name="Player" type="KinematicBody" groups=["player"]]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
