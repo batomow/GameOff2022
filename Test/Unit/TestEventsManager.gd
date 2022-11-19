@@ -98,6 +98,3 @@ func test_invalid_emit_global_event():
 	assert_eq(res.error, true)
 	if is_failing(): 
 		return 
-
-func _test_04(arg): 
-	assert_eq(arg, true)
