@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GlobalSystems/ScenesManager/ScenesManager.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Floor1/Floor1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Floor1/Room1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/MainMenu/MainMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI/Settings/Settings.tscn" type="PackedScene" id=4]
 
