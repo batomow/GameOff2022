@@ -1,13 +1,16 @@
 extends Camera
 
 onready var player:KinematicBody = $"%Player"
-onready var debug_mesh:MeshInstance = $"%DebugMesh"
 
 onready var original_offset = global_transform.origin
 
-onready var raycasts := get_children()
+onready var raycasts := $Raycasts.get_children()
 
-const max_offset = 1.0
+const max_offset:float = 0.5
+
+var bounce_count = 0
+const max_bounce_count = 50
+var slerp_back = false
 
 func _physics_process(delta):
 	#where the center of the screen would fall on the floor. 
@@ -42,21 +45,19 @@ func _physics_process(delta):
 		if raycast.is_colliding(): 
 			collided = true
 			agregate_direction -= raycast.cast_to
+			break
 	
 	#turn it into a concrete direction to avoid in relative space
 	var projected_cast_dir = agregate_direction.normalized()
-	projected_cast_dir.y = 0 
 	var cast_dir_xoffset = xbasis.dot(projected_cast_dir)
 	var cast_dir_zoffset = zbasis.dot(projected_cast_dir)
 	#cancel out the displacement in that particular direction
-	var correction_vector = Vector3(
-		cast_dir_xoffset * displacement.x, 
-		0, 
-		cast_dir_zoffset * displacement.z
-	)
-	
-	#move the camera. 
+	var correction_vector = Vector3.ZERO
+	correction_vector += xbasis * cast_dir_xoffset
+	correction_vector += zbasis * cast_dir_zoffset
+	var correction_normal = correction_vector.normalized()
 	if collided: 
-		self.global_translate(correction_vector*delta)
-	else:
-		self.global_translate(displacement*delta)
+		displacement = displacement.slide(correction_normal)
+	#look into occluders, instead of trying to avoid teh camera hitting walls, just make the walls transparent. 
+	
+	self.global_translate(displacement*delta)
