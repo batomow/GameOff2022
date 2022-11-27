@@ -13,6 +13,11 @@ var bounce_count = 0
 const max_bounce_count = 50
 var slerp_back = false
 
+var occluders :Array = []
+
+export (bool) var enable_collisions := false
+
+
 func _physics_process(delta):
 	#where the center of the screen would fall on the floor. 
 	var projected_position = transform.origin - original_offset
@@ -43,7 +48,7 @@ func _physics_process(delta):
 	var collided = false
 	var collision_normal = Vector3.ZERO
 	for raycast in raycasts: 
-		if raycast.is_colliding(): 
+		if raycast.is_colliding() and enable_collisions: 
 			collided = true
 			collision_normal = -raycast.cast_to.normalized()
 			break
@@ -61,3 +66,10 @@ func _physics_process(delta):
 	#look into occluders, instead of trying to avoid teh camera hitting walls, just make the walls transparent. 
 	
 	self.global_translate(displacement*delta)
+
+
+
+func _process(delta): 
+	var from = transform.origin
+	var to = player.transform.origin
+	var space_state = get_world().get_direct_space_state()
