@@ -18,29 +18,63 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, -8.9407e-08, 0, 1, -4.47035e-08, 0, -5.96046e-08, 1, 0, 0, 0 )
 
 [node name="RayCast" type="RayCast" parent="Camera/Raycasts"]
-transform = Transform( 0.707107, -3.95902e-08, 0.707107, 0.353553, 0.866026, -0.353553, -0.612372, 0.5, 0.612372, 0, 0, 0 )
 enabled = true
-cast_to = Vector3( 0.707, 0, 0.707 )
 
-[node name="RayCast4" type="RayCast" parent="Camera/Raycasts"]
-transform = Transform( 0.707107, -3.95902e-08, 0.707107, 0.353553, 0.866026, -0.353553, -0.612372, 0.5, 0.612372, 0, 0, 0 )
+[node name="RayCast2" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( 0, 1, 0 )
+
+[node name="RayCast3" type="RayCast" parent="Camera/Raycasts"]
 enabled = true
 cast_to = Vector3( 0, 0, 1 )
 
-[node name="RayCast3" type="RayCast" parent="Camera/Raycasts"]
-transform = Transform( 0.707107, -3.95902e-08, 0.707107, 0.353553, 0.866026, -0.353553, -0.612372, 0.5, 0.612372, 0, 0, 0 )
+[node name="RayCast4" type="RayCast" parent="Camera/Raycasts"]
 enabled = true
-cast_to = Vector3( -0.707, 0, -0.707 )
+cast_to = Vector3( 1, 0, 0 )
 
 [node name="RayCast5" type="RayCast" parent="Camera/Raycasts"]
-transform = Transform( 0.707107, -3.95902e-08, 0.707107, 0.353553, 0.866026, -0.353553, -0.612372, 0.5, 0.612372, 0, 0, 0 )
 enabled = true
 cast_to = Vector3( -1, 0, 0 )
 
 [node name="RayCast6" type="RayCast" parent="Camera/Raycasts"]
-transform = Transform( 0.707107, -3.95902e-08, 0.707107, 0.353553, 0.866026, -0.353553, -0.612372, 0.5, 0.612372, 0, 0, 0 )
 enabled = true
-cast_to = Vector3( 1, 0, 0 )
+cast_to = Vector3( -0.707, 0.707, 0 )
+
+[node name="RayCast7" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( -0.707, -0.717, 0 )
+
+[node name="RayCast8" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( 0.707, 0.717, 0 )
+
+[node name="RayCast9" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( 0.707, -0.717, 0 )
+
+[node name="RayCast10" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( 0.707, 0, 0.717 )
+
+[node name="RayCast11" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( -0.707, 0, 0.717 )
+
+[node name="RayCast12" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( -0.5, 0.707, 0.5 )
+
+[node name="RayCast13" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( 0.5, 0.707, 0.5 )
+
+[node name="RayCast14" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( 0.5, -0.707, 0.5 )
+
+[node name="RayCast15" type="RayCast" parent="Camera/Raycasts"]
+enabled = true
+cast_to = Vector3( -0.5, -0.707, 0.5 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 unique_name_in_owner = true
@@ -48,7 +82,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2024, 0, 3.702 )
 _current_camera_path = NodePath("../Camera")
 
 [node name="Floor" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="PlankTile" parent="Floor" instance=ExtResource( 1 )]
 

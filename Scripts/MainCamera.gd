@@ -3,6 +3,7 @@ extends Camera
 onready var player:KinematicBody = $"%Player"
 
 onready var original_offset = global_transform.origin
+onready var max_distance_from_player:float = original_offset.length() * 1.5
 
 onready var raycasts := $Raycasts.get_children()
 
@@ -40,23 +41,22 @@ func _physics_process(delta):
 	
 	#check for collisions for the camera by getting an average direction to avoid
 	var collided = false
-	var agregate_direction = Vector3.ZERO
+	var collision_normal = Vector3.ZERO
 	for raycast in raycasts: 
 		if raycast.is_colliding(): 
 			collided = true
-			agregate_direction -= raycast.cast_to
+			collision_normal = -raycast.cast_to.normalized()
 			break
 	
 	#turn it into a concrete direction to avoid in relative space
-	var projected_cast_dir = agregate_direction.normalized()
-	var cast_dir_xoffset = xbasis.dot(projected_cast_dir)
-	var cast_dir_zoffset = zbasis.dot(projected_cast_dir)
+	var cast_dir_xoffset = xbasis.dot(collision_normal)
+	var cast_dir_zoffset = zbasis.dot(collision_normal)
 	#cancel out the displacement in that particular direction
 	var correction_vector = Vector3.ZERO
 	correction_vector += xbasis * cast_dir_xoffset
 	correction_vector += zbasis * cast_dir_zoffset
 	var correction_normal = correction_vector.normalized()
-	if collided: 
+	if collided and transform.origin.distance_to(player.transform.origin) < max_distance_from_player: 
 		displacement = displacement.slide(correction_normal)
 	#look into occluders, instead of trying to avoid teh camera hitting walls, just make the walls transparent. 
 	
