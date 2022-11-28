@@ -1,6 +1,5 @@
 extends Spatial
 
-
 var player_infront = false
 var door_state = false
 onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -8,7 +7,6 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 func _input(event):
 	if Input.is_action_just_pressed("interact"):
 		if player_infront  and !animation_player.is_playing():
-			
 			door_state = !door_state
 			if door_state:
 				animation_player.play("OpenDoor")

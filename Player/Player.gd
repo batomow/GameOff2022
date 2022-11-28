@@ -38,3 +38,11 @@ func _physics_process(delta):
 	var direction = xbasis + zbasis
 	direction = direction.normalized() 
 	move_and_collide(direction * move_speed * delta)
+
+func pause(): 
+	set_process(false) 
+	set_physics_process(false)
+ 
+func unpause(): 
+	set_process(true) 
+	set_physics_process(true)
