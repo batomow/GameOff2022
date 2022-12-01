@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hi! Oh wow, it’s so great that someone else is here! It’s been super duper lonely... Oh, I have a great idea! You can help me get out of here. I’m a bit stuck right now, but if you can come grab me, I’m sure we’d make a super awesome team!!"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1669869371.json",
+		"name": "floor1room1dialog1"
+	}
+}

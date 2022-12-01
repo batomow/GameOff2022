@@ -1,0 +1,75 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1669869237.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1669869237.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Wait, you’re a pair of scissors?!"
+		},
+		{
+			"character": "character-1669869237.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "How high did I get last night?"
+		},
+		{
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hey! What’s your problem? You look like you’ve never seen a pair of talking scissors before. Unbelievable. "
+		},
+		{
+			"character": "character-1669869237.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You’re alive?!\nI will not engage with this mental breakdown. Nope. Nothing weird happening here"
+		},
+		{
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Now, you’re probably wondering how I came to be so beautiful. The answer is good oiling- and that’s no joke! Anyways, you want to get out of this attic or what?"
+		},
+		{
+			"character": "character-1669869237.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yes. No more attic please.\nNah ah. Not talking to the scissors. Not real."
+		},
+		{
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Of course you do! Great, glad we’re on the same page. What’s your name by the way?"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1669873933.json",
+		"name": "floor1room1dialog3"
+	}
+}

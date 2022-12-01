@@ -11,7 +11,7 @@ func _ready():
 		ScenesManager.connect("loaded_scene", self, "_on_loaded_scene")
 	player.pause()
 	load_screen.fade()
-
+	
 func _on_loaded_scene(scene_name, state): 
 	if state.has("%s player position"%name):
 		player.transform.origin = state["%s player position"%name]
@@ -21,6 +21,8 @@ func _on_loaded_scene(scene_name, state):
 	yield(get_tree().create_timer(1), "timeout")
 	player.unpause()
 	load_screen.fade()
+	start_lever_first_dialog()
+	
 
 func _on_EnterPortal_player_entered(scene_name):
 	var current_state = ScenesManager.get_state()
@@ -42,3 +44,15 @@ func _on_ExitPortal_player_entered(scene_name):
 		}
 	player.pause()
 	ScenesManager.transition_scene(scene_name, current_state)
+	
+func start_lever_first_dialog():
+	var dialog = Dialogic.start("floor1room1dialog0")
+	dialog.pause_mode = PAUSE_MODE_PROCESS
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	dialog.connect("timeline_end", self, "end_dialog")
+	get_tree().paused = true
+	
+func end_dialog():
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	

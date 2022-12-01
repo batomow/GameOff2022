@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Over here! Yeah you’re almost there. No, not that way! Oh wait, that was the right way. Sorry, \nI can’t really see you. Just a few steps closer… \nI’m right in front of you! You’re so close. Don’t give up now! Oh wait, maybe that wasn’t defeat I saw in your eye. \nLike I said, I can’t really see you, since I’m turned the wrong way around.\nTerribly rude for them to leave me here all alone for so long… \nAnyways, what’s taking you so long? God it feels like I’ve been waiting here for years. \nI thought humans were good at moving around. I mean, what else are all those appendages for? Or sometimes you have really cool chairs on wheels. \nMaybe I should get one of those, then I could go anywhere I wanted. Hey! Are you going to find me or what? I feel like you don’t like me or something… \nCome on, we’re going to make a great team! You just need to find me already!!\n"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1669873815.json",
+		"name": "floor1room1dialog2"
+	}
+}

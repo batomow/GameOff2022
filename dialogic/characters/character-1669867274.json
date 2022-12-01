@@ -1,0 +1,21 @@
+{
+	"color": "#ff797878",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1669867274.json",
+	"mirror_portraits": true,
+	"name": "Scissors",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 120,
+	"offset_y": -200,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://asset_lib_icon.png"
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}

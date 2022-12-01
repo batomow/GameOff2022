@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I’m sure you’re terribly curious how a lustrous pair of scissors like myself came to learn your language so proficiently. The answer is actually fairly simple: There used to be a TV here that only played M*A*S*H reruns. The surgical scissors that Alan Alda guy uses are so cute! "
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1669874318.json",
+		"name": "floor1room3dialog2"
+	}
+}

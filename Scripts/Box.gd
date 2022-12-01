@@ -27,3 +27,17 @@ func _open():
 	box_mesh.visible = false
 	collision_shape.disabled = true
 	opened = true
+	start_dialog()
+
+func start_dialog():
+	var dialog = Dialogic.start("scissors0")
+	dialog.pause_mode = PAUSE_MODE_PROCESS
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_parent().add_child(dialog)
+	dialog.connect("time_line_end", self, "end_dialog")
+	
+	
+func end_dialog(data):
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		

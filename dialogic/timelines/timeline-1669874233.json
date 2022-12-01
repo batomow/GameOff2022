@@ -1,0 +1,39 @@
+{
+	"events": [
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1669867274.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Eww more bugs. God this place is just covered in them. Yet another good reason to leave! Oh but you should watch out. A table once told me they saw these things eat a human alive! Or to death? Anyways, you know what I mean."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 0.1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1669874233.json",
+		"name": "floor1room3dialog0"
+	}
+}
