@@ -11,5 +11,5 @@ dest_files=[ "res://.import/turn off the truck.mp3-15ba550b378ac4c78ff6863d32a4d
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

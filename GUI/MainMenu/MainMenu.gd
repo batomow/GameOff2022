@@ -22,7 +22,7 @@ func start_game() -> void:
 	sfx_player.stream = audio_streams[0]
 	sfx_player.play()
 	print("STARTING GAME")
-	ScenesManager.transition_scene("Room 1", {})
+	ScenesManager.transition_scene("Cinematic", {})
 
 func load_game() -> void:
 	#SavesManager.load_game(file_name: String)

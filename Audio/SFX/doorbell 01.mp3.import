@@ -11,5 +11,5 @@ dest_files=[ "res://.import/doorbell 01.mp3-2c4b747e3e1673ee41127fc23ac33b06.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

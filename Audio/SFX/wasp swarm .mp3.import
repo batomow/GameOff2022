@@ -11,5 +11,5 @@ dest_files=[ "res://.import/wasp swarm .mp3-f3b90e455f2db052c76f74ee7551ff99.mp3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

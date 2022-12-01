@@ -11,5 +11,5 @@ dest_files=[ "res://.import/derbris .mp3-d7dd78831940da0acf6139f24ef4726a.mp3str
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

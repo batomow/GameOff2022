@@ -5,6 +5,7 @@ onready var return_position = $ReturnPosition
 onready var start_position = $StartPosition
 onready var boxes = $NavigationMeshInstance/Boxes.get_children()
 onready var load_screen = $LoadScreen
+onready var sfx_player = $SfxPlayer
 
 func _ready(): 
 	EventsManager.subscribe('player_died', self, "_on_player_died")

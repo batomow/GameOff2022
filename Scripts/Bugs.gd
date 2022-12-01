@@ -13,6 +13,7 @@ enum STATES {IDLE, MOVING, DYING}
 var current_state = STATES.IDLE
 var speed = 2
 onready var sprite_3d = $Sprite3D
+onready var audio_player = $AudioStreamPlayer
 
 func _ready():
 	if assigned_box != null: 
@@ -32,6 +33,7 @@ func _physics_process(delta):
 
 func _on_Area_body_entered(body):
 	if body.name == "Player": 
+		audio_player.play()
 		EventsManager.emit_global_event("player_died", scene_name)
 
 func _on_box_opened(): 

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/elevator door open .mp3-4fc6fc528a527a918345bd6c1f78
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

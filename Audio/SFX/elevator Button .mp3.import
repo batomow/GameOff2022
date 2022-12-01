@@ -11,5 +11,5 @@ dest_files=[ "res://.import/elevator Button .mp3-d5ba31569b067874f972c2c44607bbd
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

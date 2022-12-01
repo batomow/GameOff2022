@@ -21,7 +21,9 @@ onready var _scenes_map = {
 	"Room 1": _available_scenes[1],
 	"Room 2": _available_scenes[2],
 	"Room 3": _available_scenes[3],
-	"Settings": _available_scenes[4]
+	"Settings": _available_scenes[4], 
+	"Cinematic": _available_scenes[5], 
+	"Credits": _available_scenes[6]
 }
 
 func _ready(): 

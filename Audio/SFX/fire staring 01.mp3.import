@@ -11,5 +11,5 @@ dest_files=[ "res://.import/fire staring 01.mp3-5a8290f92fdf84d2fc2a56b568f67f6f
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

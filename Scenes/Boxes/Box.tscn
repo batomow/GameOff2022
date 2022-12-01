@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Boxes/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Resources/pinable_png.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Box.gd" type="Script" id=3]
 [ext_resource path="res://Resources/ashes.png" type="Texture" id=4]
+[ext_resource path="res://Audio/SFX/exploding box 01.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SFX/flint scissors.mp3" type="AudioStream" id=6]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.234, 1.234, 1 )
@@ -79,6 +81,7 @@ tracks/0/keys = {
 [node name="Box" type="StaticBody"]
 script = ExtResource( 3 )
 type = "Food"
+audio_streams = [ ExtResource( 6 ), ExtResource( 5 ) ]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.234, 0 )
@@ -109,6 +112,8 @@ shape = SubResource( 3 )
 anims/RESET = SubResource( 4 )
 anims/open_explosive = SubResource( 5 )
 anims/open_food = SubResource( 6 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_Area_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/PlankTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/LoadScreen.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Bugs.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Audio/SFX/fire loop 01.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Audio/Music/ES_DRAGS STEMS INSTRUMENTS - Myysk.mp3" type="AudioStream" id=12]
 
 [sub_resource type="NavigationMesh" id=1]
 vertices = PoolVector3Array( -4.02094, 2.17035, 2.4347, -3.02094, 2.17035, 2.6847, -3.02094, 2.42035, 0.684701, -4.02094, 2.17035, 0.684701, -1.52094, 2.17035, 2.4347, -0.270939, 2.17035, 2.6847, -0.270939, 2.42035, 0.684701, -1.52094, 2.17035, 0.684701, -4.02094, 0.420355, 5.4347, -4.52094, 0.420355, 5.6847, -4.52094, 0.420355, 6.6847, -4.02094, 0.420355, 6.9347, 0.479061, 0.420355, 3.6847, 6.47906, 0.420355, 8.9347, 9.22906, 0.420355, 6.9347, 9.22906, 0.420355, 1.6847, 6.47906, 0.420355, 8.9347, 9.22906, 0.420355, 8.4347, 9.22906, 0.420355, 6.9347, 0.479061, 0.420355, 3.6847, -4.02094, 0.420355, 3.4347, -4.02094, 0.420355, 5.4347, 9.97906, 0.420355, 6.6847, 9.97906, 0.420355, 1.9347, 9.22906, 0.420355, 1.6847, 9.22906, 0.420355, 6.9347, 0.479061, 0.420355, 3.6847, -4.02094, 0.420355, 6.9347, -4.02094, 0.420355, 11.4347, 6.97906, 0.420355, 11.4347, 6.47906, 0.420355, 8.9347, 9.22906, 0.420355, 1.6847, 9.22906, 0.420355, 0.684701, 0.729061, 0.420355, 0.684701, 0.479061, 0.420355, 3.6847, 6.47906, 0.420355, 8.9347, 14.2291, 0.420355, 0.684701, 10.7291, 0.420355, 0.684701, 10.7291, 0.420355, 1.6847, 14.2291, 0.420355, 0.684701, 10.7291, 0.420355, 1.6847, 9.97906, 0.420355, 1.9347, 10.7291, 0.420355, 6.9347, 14.2291, 0.420355, 11.9347, 9.97906, 0.420355, 1.9347, 9.97906, 0.420355, 6.6847, 10.7291, 0.420355, 6.9347, 10.7291, 0.420355, 6.9347, 10.7291, 0.420355, 11.9347, 14.2291, 0.420355, 11.9347, -3.77094, 0.420355, 1.1847, -3.77094, 0.420355, 1.9347, -3.27094, 0.420355, 1.9347, -3.27094, 0.420355, 1.1847, -1.02094, 0.420355, 1.1847, -1.02094, 0.420355, 1.9347, -0.520939, 0.420355, 1.4347, 7.72906, 2.17035, 9.6847, 7.72906, 2.17035, 11.4347, 8.97906, 2.17035, 11.4347, 8.97906, 2.42035, 9.4347, 8.22906, 0.420355, 10.1847, 8.22906, 0.420355, 10.6847, 8.72906, 0.420355, 10.6847, 8.72906, 0.420355, 9.9347 )
@@ -462,7 +464,7 @@ return_scene = "Room 2"
 [node name="ExitPortal" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2266, 0, 6.23766 )
 type = 0
-exit_scene = "Room 4"
+exit_scene = "Credits"
 
 [node name="ReturnPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1575, 0, 6.3192 )
@@ -507,6 +509,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1716, 0, 2.54736 )
 
 [node name="CoverPosition2" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10638, 0, 5.64319 )
+
+[node name="SfxPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -5.0
+autoplay = true
 
 [connection signal="player_entered" from="EnterPortal" to="." method="_on_EnterPortal_player_entered"]
 [connection signal="player_entered" from="ExitPortal" to="." method="_on_ExitPortal_player_entered"]

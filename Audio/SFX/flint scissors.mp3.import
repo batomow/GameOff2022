@@ -11,5 +11,5 @@ dest_files=[ "res://.import/flint scissors.mp3-7c43001f1b4cc2e6d6098da80ffa86c0.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

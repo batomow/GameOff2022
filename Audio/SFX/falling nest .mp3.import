@@ -11,5 +11,5 @@ dest_files=[ "res://.import/falling nest .mp3-5dbc457641145397ff759c5b6a3c215a.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

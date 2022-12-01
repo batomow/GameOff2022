@@ -11,5 +11,5 @@ dest_files=[ "res://.import/truck stop 01.mp3-ea8e2a72626e5db639ba168eb483051d.m
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

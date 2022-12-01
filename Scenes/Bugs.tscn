@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Resources/Bug/output-onlinepngtools.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bugs.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Resources/Bug/output-onlinepngtools (5).png" type="Texture" id=6]
 [ext_resource path="res://Resources/Bug/output-onlinepngtools (6).png" type="Texture" id=7]
 [ext_resource path="res://Resources/Bug/output-onlinepngtools (2).png" type="Texture" id=8]
+[ext_resource path="res://Audio/SFX/impact sound .wav" type="AudioStream" id=9]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -32,13 +33,13 @@ flip_h = true
 billboard = 1
 frames = SubResource( 3 )
 animation = "moving"
-frame = 2
 playing = true
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.299977, 0 )

@@ -31,8 +31,6 @@ func _ready():
 func _physics_process(delta):
 	var input_z:int = int(Input.is_action_pressed("back")) - int(Input.is_action_pressed("forward"))
 	var input_x:int = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
-	print(input_z)
-	print(input_x)
 	var xbasis:Vector3 = current_camera.global_transform.basis.x * input_x
 	var zbasis:Vector3 = current_camera.global_transform.basis.z * input_z
 	#remove the Y since camera is rotated downwards
