@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/air vent open.mp3-98e9f4bf3de4081cefa7fca84ca7bb03.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/air vent open.mp3"
+dest_files=[ "res://.import/air vent open.mp3-98e9f4bf3de4081cefa7fca84ca7bb03.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

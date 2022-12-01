@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/flint scissors.mp3-7c43001f1b4cc2e6d6098da80ffa86c0.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/flint scissors.mp3"
+dest_files=[ "res://.import/flint scissors.mp3-7c43001f1b4cc2e6d6098da80ffa86c0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

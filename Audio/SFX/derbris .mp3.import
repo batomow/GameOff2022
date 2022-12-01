@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/derbris .mp3-d7dd78831940da0acf6139f24ef4726a.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/derbris .mp3"
+dest_files=[ "res://.import/derbris .mp3-d7dd78831940da0acf6139f24ef4726a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

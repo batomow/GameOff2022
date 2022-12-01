@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/exploding box 01.mp3-d69be3392ddc9769117de651fa7dca4f.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/exploding box 01.mp3"
+dest_files=[ "res://.import/exploding box 01.mp3-d69be3392ddc9769117de651fa7dca4f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

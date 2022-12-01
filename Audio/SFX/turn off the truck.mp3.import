@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/turn off the truck.mp3-15ba550b378ac4c78ff6863d32a4d491.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/turn off the truck.mp3"
+dest_files=[ "res://.import/turn off the truck.mp3-15ba550b378ac4c78ff6863d32a4d491.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

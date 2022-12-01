@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/falling nest .mp3-5dbc457641145397ff759c5b6a3c215a.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/falling nest .mp3"
+dest_files=[ "res://.import/falling nest .mp3-5dbc457641145397ff759c5b6a3c215a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,13 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Resources/menu.png" type="Texture" id=1]
 [ext_resource path="res://GUI/ButtonsContainer.gd" type="Script" id=2]
 [ext_resource path="res://GUI/MainMenu/MainMenu.gd" type="Script" id=3]
+[ext_resource path="res://Audio/Music/ES_Tempus - Cobby Costa.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Audio/SFX/text bubble or menu click 01.wav" type="AudioStream" id=5]
+[ext_resource path="res://Audio/SFX/a odd sound but useful.wav" type="AudioStream" id=6]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+audio_streams = [ ExtResource( 5 ), ExtResource( 6 ) ]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 2560.0
+margin_bottom = 1440.0
+rect_scale = Vector2( 0.333, 0.333 )
+size_flags_horizontal = 4
+size_flags_vertical = 5
+texture = ExtResource( 1 )
 
 [node name="Game Title" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -23,15 +37,6 @@ margin_right = 74.0
 margin_bottom = 14.0
 size_flags_horizontal = 4
 text = "video game"
-
-[node name="TextureRect" type="TextureRect" parent="Game Title"]
-margin_left = 5.0
-margin_top = 18.0
-margin_right = 69.0
-margin_bottom = 82.0
-size_flags_horizontal = 4
-size_flags_vertical = 5
-texture = ExtResource( 1 )
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -73,11 +78,21 @@ margin_right = 69.0
 margin_bottom = 116.0
 text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
 
+[node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="option_focused" from="ButtonsContainer" to="." method="_on_ButtonsContainer_option_focused"]
 [connection signal="option_pressed" from="ButtonsContainer" to="." method="_on_option_pressed"]
+[connection signal="mouse_entered" from="ButtonsContainer/StartButton" to="ButtonsContainer" method="_on_StartButton_mouse_entered"]
 [connection signal="pressed" from="ButtonsContainer/StartButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Start" ]]
+[connection signal="mouse_entered" from="ButtonsContainer/LoadButton" to="ButtonsContainer" method="_on_LoadButton_mouse_entered"]
 [connection signal="pressed" from="ButtonsContainer/LoadButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Load" ]]
+[connection signal="mouse_entered" from="ButtonsContainer/ContinueButton" to="ButtonsContainer" method="_on_ContinueButton_mouse_entered"]
 [connection signal="pressed" from="ButtonsContainer/ContinueButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Continue" ]]
+[connection signal="mouse_entered" from="ButtonsContainer/SettingsButton" to="ButtonsContainer" method="_on_SettingsButton_mouse_entered"]
 [connection signal="pressed" from="ButtonsContainer/SettingsButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Settings" ]]
+[connection signal="mouse_entered" from="ButtonsContainer/QuitButton" to="ButtonsContainer" method="_on_QuitButton_mouse_entered"]
 [connection signal="pressed" from="ButtonsContainer/QuitButton" to="ButtonsContainer" method="_option_pressed" binds= [ "Quit" ]]

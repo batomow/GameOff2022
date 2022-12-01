@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/fire staring 01.mp3-5a8290f92fdf84d2fc2a56b568f67f6f.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/fire staring 01.mp3"
+dest_files=[ "res://.import/fire staring 01.mp3-5a8290f92fdf84d2fc2a56b568f67f6f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

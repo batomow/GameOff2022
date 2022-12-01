@@ -1,6 +1,7 @@
 extends Control
 
-export var audio_streams: AudioStream
+export (Array, AudioStream) var audio_streams
+onready var sfx_player = $SFXPlayer
 
 func _on_option_pressed(option: String) -> void:
 	match option:
@@ -18,6 +19,8 @@ func _on_option_pressed(option: String) -> void:
 
 func start_game() -> void:
 	#SavesManager.create_new_save()
+	sfx_player.stream = audio_streams[0]
+	sfx_player.play()
 	print("STARTING GAME")
 	ScenesManager.transition_scene("Room 1", {})
 
@@ -35,3 +38,9 @@ func open_settings() -> void:
 
 func quit_game() -> void:
 	get_tree().quit()
+
+func _on_ButtonsContainer_option_focused():
+	if sfx_player.playing: 
+		return
+	sfx_player.stream = audio_streams[1]
+	sfx_player.play()

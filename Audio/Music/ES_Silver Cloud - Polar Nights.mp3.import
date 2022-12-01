@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_Silver Cloud - Polar Nights.mp3-3c5eef9c4375545027f8052085f7657c.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/ES_Silver Cloud - Polar Nights.mp3"
+dest_files=[ "res://.import/ES_Silver Cloud - Polar Nights.mp3-3c5eef9c4375545027f8052085f7657c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

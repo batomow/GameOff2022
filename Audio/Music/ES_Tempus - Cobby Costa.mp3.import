@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_Tempus - Cobby Costa.mp3-bcedaf969618e2b3a92f2492a8b8c222.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/ES_Tempus - Cobby Costa.mp3"
+dest_files=[ "res://.import/ES_Tempus - Cobby Costa.mp3-bcedaf969618e2b3a92f2492a8b8c222.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

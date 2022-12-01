@@ -1,10 +1,12 @@
 extends KinematicBody
 
-
+export (Array, AudioStream) var audio_streams
 export (NodePath) var _current_camera_path
+onready var audio_player = $AudioStreamPlayer3D
 var current_camera:Camera setget set_camera, get_camera
 var move_speed: float = 4 setget set_move_speed, get_move_speed
 var velocity:Vector3 
+var foot_step_counter = 0
 
 func set_camera(camera:Camera): 
 	current_camera = camera
@@ -29,6 +31,8 @@ func _ready():
 func _physics_process(delta):
 	var input_z:int = int(Input.is_action_pressed("back")) - int(Input.is_action_pressed("forward"))
 	var input_x:int = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
+	print(input_z)
+	print(input_x)
 	var xbasis:Vector3 = current_camera.global_transform.basis.x * input_x
 	var zbasis:Vector3 = current_camera.global_transform.basis.z * input_z
 	#remove the Y since camera is rotated downwards
@@ -37,7 +41,11 @@ func _physics_process(delta):
 	zbasis = zbasis.normalized() 
 	var direction = xbasis + zbasis
 	direction = direction.normalized() 
-	move_and_collide(direction * move_speed * delta)
+	var velocity = direction * move_speed * delta
+	if (input_z != 0 or input_x != 0) and not audio_player.playing:
+		audio_player.stream = audio_streams[foot_step_counter]
+		audio_player.play()
+	move_and_collide(velocity)
 
 func pause(): 
 	set_process(false) 

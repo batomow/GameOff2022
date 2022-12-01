@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ES_My Pet Daemon - par.mp3-dcd181733d58f85a27bcee5f26bcc185.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/ES_My Pet Daemon - par.mp3"
+dest_files=[ "res://.import/ES_My Pet Daemon - par.mp3-dcd181733d58f85a27bcee5f26bcc185.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

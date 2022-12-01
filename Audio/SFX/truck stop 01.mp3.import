@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/truck stop 01.mp3-ea8e2a72626e5db639ba168eb483051d.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/truck stop 01.mp3"
+dest_files=[ "res://.import/truck stop 01.mp3-ea8e2a72626e5db639ba168eb483051d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wasp.mp3-d425bba31671455dcdf49d71751812ce.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/wasp.mp3"
+dest_files=[ "res://.import/wasp.mp3-d425bba31671455dcdf49d71751812ce.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

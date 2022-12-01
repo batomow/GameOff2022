@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/creaking wood 01.mp3-69f0c32f98c59bd96e7a32b2c93aca58.mp3str"
+
+[deps]
+
+source_file="res://Audio/SFX/creaking wood 01.mp3"
+dest_files=[ "res://.import/creaking wood 01.mp3-69f0c32f98c59bd96e7a32b2c93aca58.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
