@@ -3,10 +3,11 @@ extends Node
 onready var player = $"%Player"
 onready var return_position = $ReturnPosition
 onready var start_position = $StartPosition
-onready var boxes = $Boxes.get_children()
+onready var boxes = $NavigationMeshInstance/Boxes.get_children()
 onready var load_screen = $LoadScreen
 
 func _ready(): 
+	EventsManager.subscribe('player_died', self, "_on_player_died")
 	if not ScenesManager.is_connected("loaded_scene", self, "_on_loaded_scene"): 
 		ScenesManager.connect("loaded_scene", self, "_on_loaded_scene")
 	player.pause()
@@ -42,3 +43,6 @@ func _on_ExitPortal_player_entered(scene_name):
 		}
 	player.pause()
 	ScenesManager.transition_scene(scene_name, current_state)
+
+func _on_player_died(scene_name)->void: 
+	ScenesManager.transition_scene(scene_name, {})

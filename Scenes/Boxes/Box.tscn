@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Boxes/Material_001.material" type="Material" id=1]
 [ext_resource path="res://Resources/pinable_png.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Box.gd" type="Script" id=3]
+[ext_resource path="res://Resources/ashes.png" type="Texture" id=4]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1.234, 1.234, 1 )
@@ -26,8 +27,58 @@ surfaces/0 = {
 [sub_resource type="CylinderShape" id=3]
 radius = 0.7404
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Trash:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "open_explosive"
+length = 0.02
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Trash:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ null, ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "open_food"
+length = 0.02
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Trash:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ null, ExtResource( 2 ) ]
+}
+
 [node name="Box" type="StaticBody"]
 script = ExtResource( 3 )
+type = "Food"
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 1.234, 0 )
@@ -42,7 +93,6 @@ material/0 = ExtResource( 1 )
 [node name="Trash" type="Sprite3D" parent="."]
 transform = Transform( 0.049, 0, 0, 0, 0.049, 0, 0, 0, 1, 0, 0.9255, 0 )
 billboard = 1
-texture = ExtResource( 2 )
 
 [node name="InteractArea" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9872, 0, 1.234 )
@@ -54,6 +104,11 @@ shape = SubResource( 3 )
 [node name="CollisionShape3" type="CollisionShape" parent="InteractArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3446, 1.234, -0.1234 )
 shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/open_explosive = SubResource( 5 )
+anims/open_food = SubResource( 6 )
 
 [connection signal="body_entered" from="InteractArea" to="." method="_on_Area_body_entered"]
 [connection signal="body_exited" from="InteractArea" to="." method="_on_Area_body_exited"]

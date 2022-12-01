@@ -4,6 +4,8 @@ var _event_bus = []
 signal player_died
 signal floor_completed(floor_number)
 signal room_completed(room_number)
+signal rebaking_scene
+signal finished_scene_rebake
 
 func subscribe(global_event:String, object_reference:Object, callback:String)->Testable: 
 	if not self.has_signal(global_event): 

@@ -57,6 +57,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ScenesManager="*res://GlobalSystems/ScenesManager/ScenesManager.tscn"
+EventsManager="*res://GlobalSystems/EventsManager.gd"
 
 [display]
 

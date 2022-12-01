@@ -4,7 +4,10 @@ var player_in := false
 onready var box_mesh = $BoxMesh
 onready var collision_shape = $CollisionShape
 var opened = false
-var state = {} 
+var state = {}
+export (String, "Food", "Explosive") var type
+signal opened
+onready var animation_player = $AnimationPlayer
 
 func _process(delta):
 	if Input.is_action_pressed("interact") and player_in and not opened: 
@@ -24,6 +27,11 @@ func apply_state(new_state):
 			_open()
 
 func _open(): 
+	if type == "Food": 
+		animation_player.play("open_food")
+	elif type == "Explosive": 
+		animation_player.play("open_explosive")
 	box_mesh.visible = false
 	collision_shape.disabled = true
 	opened = true
+	emit_signal("opened")

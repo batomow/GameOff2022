@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/PlankTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,11 @@
 [ext_resource path="res://Scenes/Portal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Room.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/LoadScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Bugs.tscn" type="PackedScene" id=10]
+
+[sub_resource type="NavigationMesh" id=1]
+vertices = PoolVector3Array( -4.02094, 0.420355, 5.4254, -4.52094, 0.420355, 5.6754, -4.02094, 0.420355, 8.4254, -0.770939, 0.420355, 2.9254, -0.770939, 0.420355, 0.675396, -4.02094, 0.420355, 0.675396, -4.02094, 0.420355, 5.4254, -4.02094, 0.420355, 5.4254, -4.02094, 0.420355, 8.4254, -0.0209389, 0.420355, 8.4254, 1.47906, 0.420355, 3.6754, -0.770939, 0.420355, 2.9254, -0.0209389, 0.420355, 8.4254, 0.229061, 0.420355, 8.9254, 1.47906, 0.420355, 3.6754, 0.729061, 2.17035, 2.4254, 1.97906, 2.17035, 2.6754, 1.72906, 2.42035, 0.675396, 0.729061, 2.17035, 0.675396, 3.22906, 2.17035, 2.4254, 4.47906, 2.17035, 2.6754, 4.47906, 2.42035, 0.675396, 3.22906, 2.17035, 0.675396, 11.9791, 0.420355, 6.9254, 11.9791, 0.420355, 11.4254, 14.2291, 0.420355, 11.4254, 14.2291, 0.420355, 0.675396, 11.2291, 0.420355, 6.6754, 11.9791, 0.420355, 6.9254, 14.2291, 0.420355, 0.675396, 5.47906, 0.420355, 0.675396, 5.22906, 0.420355, 3.6754, 0.979061, 0.420355, 1.1754, 1.47906, 0.420355, 1.9254, 1.47906, 0.420355, 1.1754, 3.72906, 0.420355, 1.1754, 3.72906, 0.420355, 1.9254, 4.22906, 0.420355, 1.9254, 4.22906, 0.420355, 1.1754, 10.7291, 0.420355, 6.9254, 11.2291, 0.420355, 6.6754, 5.22906, 0.420355, 3.6754, 5.22906, 0.420355, 3.6754, 1.47906, 0.420355, 3.6754, 0.229061, 0.420355, 8.9254, 0.479061, 0.420355, 11.4254, 10.7291, 0.420355, 11.4254, 10.7291, 0.420355, 6.9254, -3.02094, 2.42035, 10.9254, -3.02094, 2.42035, 9.4254, -4.02094, 2.17035, 9.6754, -4.02094, 2.17035, 11.4254, -0.520939, 2.17035, 11.4254, -0.770939, 2.42035, 9.4254, -1.77094, 2.17035, 9.6754, -2.02094, 2.17035, 11.1754, -2.02094, 2.17035, 11.1754, -3.02094, 2.42035, 10.9254, -4.02094, 2.17035, 11.4254, -2.02094, 2.17035, 11.1754, -4.02094, 2.17035, 11.4254, -0.520939, 2.17035, 11.4254 )
+polygons = [ PoolIntArray( 2, 1, 0 ), PoolIntArray( 4, 3, 5 ), PoolIntArray( 5, 3, 6 ), PoolIntArray( 8, 7, 9 ), PoolIntArray( 9, 7, 11 ), PoolIntArray( 9, 11, 10 ), PoolIntArray( 14, 13, 12 ), PoolIntArray( 18, 17, 15 ), PoolIntArray( 15, 17, 16 ), PoolIntArray( 22, 21, 19 ), PoolIntArray( 19, 21, 20 ), PoolIntArray( 24, 23, 25 ), PoolIntArray( 25, 23, 26 ), PoolIntArray( 28, 27, 29 ), PoolIntArray( 29, 27, 31 ), PoolIntArray( 29, 31, 30 ), PoolIntArray( 34, 33, 32 ), PoolIntArray( 38, 37, 35 ), PoolIntArray( 35, 37, 36 ), PoolIntArray( 41, 40, 39 ), PoolIntArray( 44, 43, 45 ), PoolIntArray( 45, 43, 42 ), PoolIntArray( 45, 42, 47 ), PoolIntArray( 45, 47, 46 ), PoolIntArray( 49, 48, 50 ), PoolIntArray( 50, 48, 51 ), PoolIntArray( 54, 53, 55 ), PoolIntArray( 55, 53, 52 ), PoolIntArray( 58, 57, 56 ), PoolIntArray( 59, 61, 60 ) ]
 
 [node name="Room2" type="Node"]
 script = ExtResource( 8 )
@@ -23,411 +28,414 @@ unique_name_in_owner = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90114, 0, 6.3192 )
 _current_camera_path = NodePath("../Camera")
 
-[node name="Floor" type="Spatial" parent="."]
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
+navmesh = SubResource( 1 )
 
-[node name="PlankTile" parent="Floor" instance=ExtResource( 1 )]
+[node name="Floor" type="Spatial" parent="NavigationMeshInstance"]
 
-[node name="PlankTile2" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
+
+[node name="PlankTile2" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.468 )
 
-[node name="PlankTile3" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile3" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.936 )
 
-[node name="PlankTile4" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile4" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 0 )
 
-[node name="PlankTile5" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile5" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 2.468 )
 
-[node name="PlankTile6" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile6" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 4.936 )
 
-[node name="PlankTile7" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile7" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 0 )
 
-[node name="PlankTile8" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile8" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 2.468 )
 
-[node name="PlankTile9" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile9" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 4.936 )
 
-[node name="PlankTile10" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile10" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 0 )
 
-[node name="PlankTile11" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile11" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 2.468 )
 
-[node name="PlankTile12" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile12" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 4.936 )
 
-[node name="PlankTile13" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile13" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 0 )
 
-[node name="PlankTile14" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile14" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.402, 0, 2.468 )
 
-[node name="PlankTile15" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile15" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.402, 0, 4.936 )
 
-[node name="PlankTile22" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile22" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.404 )
 
-[node name="PlankTile23" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile23" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.872 )
 
-[node name="PlankTile25" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile25" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 7.404 )
 
-[node name="PlankTile26" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile26" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 9.872 )
 
-[node name="PlankTile28" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile28" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 7.404 )
 
-[node name="PlankTile29" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile29" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 9.872 )
 
-[node name="PlankTile31" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile31" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 7.404 )
 
-[node name="PlankTile32" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile32" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 9.872 )
 
-[node name="PlankTile34" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile34" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.402, 0, 7.404 )
 
-[node name="PlankTile35" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile35" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.402, 0, 9.872 )
 
-[node name="PlankTile16" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile16" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.402, 0, 0 )
 
-[node name="PlankTile17" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile17" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 2.468 )
 
-[node name="PlankTile18" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile18" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 4.936 )
 
-[node name="PlankTile36" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile36" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 7.404 )
 
-[node name="PlankTile37" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile37" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 9.872 )
 
-[node name="PlankTile100" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile100" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.936, 0, 9.53674e-07 )
 
-[node name="PlankTile101" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile101" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.936, 0, 2.468 )
 
-[node name="PlankTile102" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile102" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.936, 0, 4.936 )
 
-[node name="PlankTile103" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile103" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.468, 0, 9.53674e-07 )
 
-[node name="PlankTile104" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile104" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.468, 0, 2.468 )
 
-[node name="PlankTile105" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile105" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.468, 0, 4.936 )
 
-[node name="PlankTile121" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile121" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -4.936, 0, 7.404 )
 
-[node name="PlankTile122" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile122" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -4.936, 0, 9.872 )
 
-[node name="PlankTile124" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile124" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -2.468, 0, 7.404 )
 
-[node name="PlankTile125" parent="Floor" instance=ExtResource( 1 )]
+[node name="PlankTile125" parent="NavigationMeshInstance/Floor" instance=ExtResource( 1 )]
 transform = Transform( 0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, -2.468, 0, 9.872 )
 
-[node name="Wall" type="Spatial" parent="."]
+[node name="Wall" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
-[node name="PlankTile" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 
-[node name="PlankTile2" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile2" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.468 )
 
-[node name="PlankTile3" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile3" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.936 )
 
-[node name="PlankTile16" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile16" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3881, 0, 0 )
 
-[node name="PlankTile17" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile17" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3881, 0, 2.468 )
 
-[node name="PlankTile18" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile18" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3881, 0, 4.936 )
 
-[node name="PlankTile4" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile4" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 0 )
 
-[node name="PlankTile5" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile5" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 2.468 )
 
-[node name="PlankTile6" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile6" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 4.936 )
 
-[node name="PlankTile7" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile7" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 0 )
 
-[node name="PlankTile8" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile8" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 2.468 )
 
-[node name="PlankTile9" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile9" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 4.936 )
 
-[node name="PlankTile10" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile10" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 0 )
 
-[node name="PlankTile11" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile11" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 2.468 )
 
-[node name="PlankTile12" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile12" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 4.936 )
 
-[node name="PlankTile13" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile13" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 0 )
 
-[node name="PlankTile14" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile14" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 2.468 )
 
-[node name="PlankTile15" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile15" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 4.936 )
 
-[node name="PlankTile37" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile37" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02076, 0, 0 )
 
-[node name="PlankTile38" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile38" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02076, 0, 2.468 )
 
-[node name="PlankTile39" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile39" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02076, 0, 4.936 )
 
-[node name="PlankTile40" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile40" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55276, 0, 0 )
 
-[node name="PlankTile41" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile41" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55276, 0, 2.468 )
 
-[node name="PlankTile42" parent="Wall" instance=ExtResource( 1 )]
+[node name="PlankTile42" parent="NavigationMeshInstance/Wall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55276, 0, 4.936 )
 
-[node name="Wall2" type="Spatial" parent="."]
+[node name="Wall2" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 12.2136 )
 
-[node name="PlankTile" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 
-[node name="PlankTile2" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile2" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.468 )
 
-[node name="PlankTile3" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile3" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.936 )
 
-[node name="PlankTile16" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile16" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3881, 0, 0 )
 
-[node name="PlankTile17" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile17" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3881, 0, 2.468 )
 
-[node name="PlankTile18" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile18" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3881, 0, 4.936 )
 
-[node name="PlankTile4" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile4" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 0 )
 
-[node name="PlankTile5" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile5" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 2.468 )
 
-[node name="PlankTile6" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile6" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 4.936 )
 
-[node name="PlankTile7" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile7" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 0 )
 
-[node name="PlankTile8" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile8" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 2.468 )
 
-[node name="PlankTile9" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile9" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 4.936 )
 
-[node name="PlankTile10" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile10" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 0 )
 
-[node name="PlankTile11" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile11" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 2.468 )
 
-[node name="PlankTile12" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile12" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 4.936 )
 
-[node name="PlankTile13" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile13" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 0 )
 
-[node name="PlankTile14" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile14" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 2.468 )
 
-[node name="PlankTile15" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile15" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 4.936 )
 
-[node name="PlankTile37" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile37" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02076, 0, 0 )
 
-[node name="PlankTile38" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile38" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02076, 0, 2.468 )
 
-[node name="PlankTile39" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile39" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.02076, 0, 4.936 )
 
-[node name="PlankTile40" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile40" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55276, 0, 0 )
 
-[node name="PlankTile41" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile41" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55276, 0, 2.468 )
 
-[node name="PlankTile42" parent="Wall2" instance=ExtResource( 1 )]
+[node name="PlankTile42" parent="NavigationMeshInstance/Wall2" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.55276, 0, 4.936 )
 
-[node name="BackWall" type="Spatial" parent="."]
+[node name="BackWall" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.7982, 0, 0 )
 
-[node name="PlankTile" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 
-[node name="PlankTile2" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile2" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.468 )
 
-[node name="PlankTile3" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile3" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.936 )
 
-[node name="PlankTile4" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile4" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 0 )
 
-[node name="PlankTile5" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile5" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 2.468 )
 
-[node name="PlankTile6" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile6" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 4.936 )
 
-[node name="PlankTile8" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile8" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 2.468 )
 
-[node name="PlankTile9" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile9" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 4.936 )
 
-[node name="PlankTile10" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile10" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 0 )
 
-[node name="PlankTile11" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile11" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 2.468 )
 
-[node name="PlankTile12" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile12" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 4.936 )
 
-[node name="PlankTile13" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile13" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 0 )
 
-[node name="PlankTile14" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile14" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 2.468 )
 
-[node name="PlankTile15" parent="BackWall" instance=ExtResource( 1 )]
+[node name="PlankTile15" parent="NavigationMeshInstance/BackWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 4.936 )
 
-[node name="FrontWall" type="Spatial" parent="."]
+[node name="FrontWall" type="Spatial" parent="NavigationMeshInstance"]
 transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 14.8332, 0, 0.00237575 )
 
-[node name="PlankTile" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 
-[node name="PlankTile2" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile2" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.468 )
 
-[node name="PlankTile3" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile3" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.936 )
 
-[node name="PlankTile4" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile4" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 0 )
 
-[node name="PlankTile5" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile5" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 2.468 )
 
-[node name="PlankTile6" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile6" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.468, 0, 4.936 )
 
-[node name="PlankTile8" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile8" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 2.468 )
 
-[node name="PlankTile9" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile9" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.936, 0, 4.936 )
 
-[node name="PlankTile10" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile10" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 0 )
 
-[node name="PlankTile11" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile11" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 2.468 )
 
-[node name="PlankTile12" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile12" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.404, 0, 4.936 )
 
-[node name="PlankTile13" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile13" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 0 )
 
-[node name="PlankTile14" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile14" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 2.468 )
 
-[node name="PlankTile15" parent="FrontWall" instance=ExtResource( 1 )]
+[node name="PlankTile15" parent="NavigationMeshInstance/FrontWall" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.872, 0, 4.936 )
 
-[node name="Boxes" type="Spatial" parent="."]
+[node name="Boxes" type="Spatial" parent="NavigationMeshInstance"]
 
-[node name="Box" parent="Boxes" instance=ExtResource( 5 )]
+[node name="Box" parent="NavigationMeshInstance/Boxes" instance=ExtResource( 5 )]
 transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 3.9258, 0, 1.65756 )
 
-[node name="Box2" parent="Boxes" instance=ExtResource( 5 )]
+[node name="Box2" parent="NavigationMeshInstance/Boxes" instance=ExtResource( 5 )]
 transform = Transform( 0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 1.26498, 0, 1.61394 )
 
-[node name="Box3" parent="Boxes" instance=ExtResource( 5 )]
+[node name="Box3" parent="NavigationMeshInstance/Boxes" instance=ExtResource( 5 )]
 transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -1.17774, 0, 10.4252 )
 
-[node name="Box4" parent="Boxes" instance=ExtResource( 5 )]
+[node name="Box4" parent="NavigationMeshInstance/Boxes" instance=ExtResource( 5 )]
 transform = Transform( 0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -3.4896, 0, 10.4688 )
+
+[node name="Obstacles" type="Spatial" parent="NavigationMeshInstance"]
+
+[node name="PlankTile" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0 )
+
+[node name="PlankTile2" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 2.181, 0 )
+
+[node name="PlankTile3" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 4.7982, 0 )
+
+[node name="PlankTile4" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 0, 9.5964 )
+
+[node name="PlankTile5" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 2.181, 9.5964 )
+
+[node name="PlankTile6" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 4.7982, 9.5964 )
+
+[node name="PlankTile7" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 0, 7.4154 )
+
+[node name="PlankTile8" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 2.181, 7.4154 )
+
+[node name="PlankTile9" parent="NavigationMeshInstance/Obstacles" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 4.7982, 7.4154 )
 
 [node name="Door" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1.15, 0, -1.1875, 0, -5.19073e-08, -4.7982, 0, 6.19404 )
 
 [node name="Door2" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1.15, 0, -1.1875, 0, -5.19073e-08, 14.8308, 0, 6.19404 )
-
-[node name="Obstacles" type="Spatial" parent="."]
-
-[node name="PlankTile" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0 )
-
-[node name="PlankTile2" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 2.181, 0 )
-
-[node name="PlankTile3" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 4.7982, 0 )
-
-[node name="PlankTile4" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 0, 9.5964 )
-
-[node name="PlankTile5" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 2.181, 9.5964 )
-
-[node name="PlankTile6" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 4.7982, 9.5964 )
-
-[node name="PlankTile7" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 0, 7.4154 )
-
-[node name="PlankTile8" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 2.181, 7.4154 )
-
-[node name="PlankTile9" parent="Obstacles" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 11.3412, 4.7982, 7.4154 )
 
 [node name="EnterPortal" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19404, 0, 6.23766 )
@@ -446,6 +454,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1575, 0, 6.3192 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85752, 0, 6.3192 )
 
 [node name="LoadScreen" parent="." instance=ExtResource( 9 )]
+
+[node name="Bug" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3197, 0.214181, 4.182 )
+assigned_box_path = NodePath("../NavigationMeshInstance/Boxes/Box4")
+navigation_mesh_instance_path = NodePath("../NavigationMeshInstance")
+scene_name = "Room 2"
+
+[node name="Bug2" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88776, 0.214181, 4.182 )
+assigned_box_path = NodePath("../NavigationMeshInstance/Boxes/Box3")
+navigation_mesh_instance_path = NodePath("../NavigationMeshInstance")
+scene_name = "Room 2"
+
+[node name="Bug5" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.22105, 0.214181, 1.40302 )
+assigned_box_path = NodePath("../NavigationMeshInstance/Boxes/Box3")
+navigation_mesh_instance_path = NodePath("../NavigationMeshInstance")
+scene_name = "Room 2"
+
+[node name="Bug3" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1996, 0.214181, 5.68113 )
+assigned_box_path = NodePath("../NavigationMeshInstance/Boxes/Box")
+navigation_mesh_instance_path = NodePath("../NavigationMeshInstance")
+scene_name = "Room 2"
+
+[node name="Bug4" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3066, 0.214181, 3.12093 )
+assigned_box_path = NodePath("../NavigationMeshInstance/Boxes/Box2")
+navigation_mesh_instance_path = NodePath("../NavigationMeshInstance")
+scene_name = "Room 2"
 
 [connection signal="player_entered" from="EnterPortal" to="." method="_on_EnterPortal_player_entered"]
 [connection signal="player_entered" from="ExitPortal" to="." method="_on_ExitPortal_player_entered"]
