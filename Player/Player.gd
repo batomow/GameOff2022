@@ -7,6 +7,7 @@ var current_camera:Camera setget set_camera, get_camera
 var move_speed: float = 4 setget set_move_speed, get_move_speed
 var velocity:Vector3 
 var foot_step_counter = 0
+onready var animated_sprite = $AnimatedSprite3D
 
 func set_camera(camera:Camera): 
 	current_camera = camera
@@ -43,6 +44,20 @@ func _physics_process(delta):
 	if (input_z != 0 or input_x != 0) and not audio_player.playing:
 		audio_player.stream = audio_streams[foot_step_counter]
 		audio_player.play()
+	if input_z > 0: 
+		if input_x > 0: 
+			animated_sprite.flip_h = false
+		else: 
+			animated_sprite.flip_h = true
+		animated_sprite.play("moving_forward")
+	elif input_z < 0: 
+		if input_x > 0: 
+			animated_sprite.flip_h = false
+		else: 
+			animated_sprite.flip_h = true
+		animated_sprite.play("moving_back")
+	if input_z == 0 and input_x == 0: 
+		animated_sprite.stop()
 	move_and_collide(velocity)
 
 func pause(): 

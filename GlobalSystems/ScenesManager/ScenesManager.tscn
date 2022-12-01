@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://GlobalSystems/ScenesManager/ScenesManager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Floor1/Room1.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Floor1/Room3.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Cinematic.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Credits.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Cinematic2.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fade"
@@ -41,7 +42,7 @@ tracks/0/keys = {
 
 [node name="ScenesManager" type="CanvasLayer"]
 script = ExtResource( 1 )
-_available_scenes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ) ]
+_available_scenes = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

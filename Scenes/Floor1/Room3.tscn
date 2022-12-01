@@ -464,7 +464,7 @@ return_scene = "Room 2"
 [node name="ExitPortal" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2266, 0, 6.23766 )
 type = 0
-exit_scene = "Credits"
+exit_scene = "Cinematic2"
 
 [node name="ReturnPosition" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1575, 0, 6.3192 )

@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Resources/menu.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=2]
+[ext_resource path="res://Audio/Music/ES_Substage - Jay Varton.mp3" type="AudioStream" id=3]
 
 [node name="Credits" type="Node"]
+script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
@@ -43,3 +46,8 @@ margin_top = -46.0
 margin_right = -20.0
 margin_bottom = -26.0
 text = "Back to Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
